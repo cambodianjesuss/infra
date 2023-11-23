@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: posts
-          image: cambodianjesuss/posts:latest
+          image: boisoth/posts:latest
