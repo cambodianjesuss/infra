@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: posts-srv
 spec:
-  type: NodePort
   selector:
-    app: posts # telling the service to find all pods named app: posts
+    app: posts # telling the service to find all pods named app: posts, template label name
+  type: NodePort # if you don't specify, it defaults to ClusterIp
   ports:
     - name: posts # array
       protocol: TCP
