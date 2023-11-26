@@ -12,6 +12,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: posts-clusterip-src # The service from posts-depl.yaml
+                name: posts-clusterip-srv # The service from posts-depl.yaml
                 port:
                   number: 4000
