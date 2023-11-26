@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: posts.com
+    - host: posts.com # localhost from hosts file
       http:
         paths:
           - path: /posts # Any requests coming in to /posts will be directed to our posts service
