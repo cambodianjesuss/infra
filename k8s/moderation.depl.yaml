@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-depl # deployment name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderation
+  template:
+    metadata:
+      labels:
+        app: moderation # label for the pod being created
+    spec:
+      containers:
+        - name: moderation
+          image: boisoth/moderation:latest
+--- # create another object
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-srv # Cluster IP Service name
+spec:
+  selector: # Tell service what pods it will allow access to
+    app: moderation # From deployment template label for pod
+  type: ClusterIP
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003

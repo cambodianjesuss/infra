@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-srv
+  name: posts-srv  # NodePort Service name
 spec:
   selector:
     app: posts # telling the service to find all pods named app: posts, template label name

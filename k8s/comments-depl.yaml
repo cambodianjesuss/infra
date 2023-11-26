@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-depl # deployment name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments
+  template:
+    metadata:
+      labels:
+        app: comments # label for the pod being created
+    spec:
+      containers:
+        - name: comments
+          image: boisoth/comments:latest
+--- # create another object
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-srv # Cluster IP Service name
+spec:
+  selector: # Tell service what pods it will allow access to
+    app: comments # From deployment template label for pod
+  type: ClusterIP
+  ports:
+    - name: comments
+      protocol: TCP
+      port: 4001
+      targetPort: 4001
