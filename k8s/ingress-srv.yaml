@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: posts.com
+      http:
+        paths:
+          - path: /posts # Any requests coming in to /posts will be directed to our posts service
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: posts-clusterip-src # The service from posts-depl.yaml
+                port:
+                  number: 4000
